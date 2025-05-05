@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product - Admin Panel</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body style="background: linear-gradient(to right, #2E3192, #1BFFFF);">
+
+<section >
+
+  <!-- Banner/Header -->
+  <div class="bg-primary text-white text-center py-4 shadow-sm mt-0">
+    <h2 class="mb-0">Admin Product Portal</h2>
+    <p class="mb-0">Fill in the form below to add a new product</p>
+  </div>
+
+  <div class="container">
+    <a th:href="@{/admin}" class="text-white mb-4 d-inline-block text-decoration-none fw-semibold">
+      <i class="fas fa-arrow-left me-2"></i>Return to Dashboard
+    </a>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card shadow-lg rounded-4 border-0">
+          <div class="card-header bg-white text-center border-0 pt-4">
+            <h4 class="text-dark fw-bold">Add New Product</h4>
+
+            <!-- Success Message -->
+            <th:block th:if="${session.Success}">
+              <p class="text-success fw-semibold mt-2">[[${session.Success}]]</p>
+              <th:block th:text="${@commonServiceImple.removeSessionMessage()}"></th:block>
+            </th:block>
+
+            <!-- Error Message -->
+            <th:block th:if="${session.errorMsg}">
+              <p class="text-danger fw-semibold mt-2">[[${session.errorMsg}]]</p>
+              <th:block th:text="${@commonServiceImple.removeSessionMessage()}"></th:block>
+            </th:block>
+          </div>
+
+          <div class="card-body px-4 py-5">
+            <form action="/admin/saveProduct" method="post" enctype="multipart/form-data">
+              <div class="mb-4">
+                <label for="title" class="form-label">Product Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+              </div>
+
+              <div class="mb-4">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+              </div>
+
+              <div class="mb-4">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="category" required>
+                  <option value="">-- Select Category --</option>
+                  <option th:each="temp : ${list}" th:value="${temp.name}" th:text="${temp.name}"></option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" name="price" min="0" step="0.01" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label d-block">Status</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="isActive" id="active" value="true" checked>
+                  <label class="form-check-label" for="active">Active</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="isActive" id="inactive" value="false">
+                  <label class="form-check-label" for="inactive">Inactive</label>
+                </div>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="stock" class="form-label">Stock Quantity</label>
+                  <input type="number" class="form-control" id="stock" name="stock" min="0" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="file" class="form-label">Product Image</label>
+                  <input type="file" class="form-control" id="file" name="file" accept="image/*" required>
+                </div>
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary py-2 fw-bold">
+                  <i class="fas fa-upload me-2"></i>Add Product
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

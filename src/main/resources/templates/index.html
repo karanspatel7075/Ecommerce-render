@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::Layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopEase - Your Online Marketplace</title>
+    <style>
+        /* Enhanced Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: inherit;
+        }
+
+        .main-banner {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-banner img {
+            width: 100%;
+            height: 450px; /* Slightly increased height */
+            object-fit: cover;
+            filter: brightness(90%); /* Subtle darkening for better text contrast */
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .banner-overlay h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .banner-overlay p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary-lg {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary-lg:hover {
+            background-color: #0056b3;
+        }
+
+        .category-section {
+            padding: 40px 0;
+        }
+
+        .category-section h2 {
+            color: #343a40;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .category-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 50px;
+            height: 3px;
+            background-color: #007bff;
+            transform: translateX(-50%);
+        }
+
+        .category-card {
+            border: none !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .category-card:hover {
+            transform: scale(1.03);
+        }
+
+        .category-card img {
+            height: 180px !important; /* Slightly larger category images */
+            object-fit: contain;
+            padding: 15px;
+        }
+
+        .category-card-body {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .category-card-body a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #212529;
+        }
+
+        .latest-products-section {
+            background-color: #e9ecef;
+            padding: 40px 0;
+        }
+
+        .latest-products-section h2 {
+            color: #343a40;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .latest-products-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 50px;
+            height: 3px;
+            background-color: #28a745; /* A different accent color */
+            transform: translateX(-50%);
+        }
+
+        .product-card {
+            border: none !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            height: 220px !important; /* Slightly larger product images */
+            object-fit: contain;
+            padding: 20px;
+            background-color: white; /* Add white background to product images */
+            border-radius: 8px 8px 0 0;
+        }
+
+        .product-card-body {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .product-card-body a {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #212529;
+        }
+
+        .promotional-banner {
+            margin-top: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .promotional-banner img {
+            width: 100%;
+            height: 350px; /* Slightly increased height */
+            object-fit: cover;
+            filter: brightness(95%);
+        }
+
+        .footer {
+            background-color: #343a40 !important;
+            color: #fff !important;
+            padding-top: 50px !important;
+            padding-bottom: 30px !important;
+        }
+
+        .footer h5 {
+            color: #fff;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #6c757d;
+            padding-bottom: 10px;
+        }
+
+        .footer a {
+            color: #adb5bd !important;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #fff !important;
+        }
+
+        .footer hr {
+            border-color: #6c757d;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            color: #adb5bd;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<section>
+
+<!--    <div class="container-fluid p-0 main-banner">-->
+<!--        <img src="https://www.alezay.com/wp-content/uploads/2023/03/SAMSUNG-GALAXY-S23-SERIES-MAIN-BANNER-ALEZAY-KUWAIT.jpg" class="img-fluid w-100" alt="Main Banner">-->
+    <!-- Include Bootstrap CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div id="mainBannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="https://www.alezay.com/wp-content/uploads/2023/03/SAMSUNG-GALAXY-S23-SERIES-MAIN-BANNER-ALEZAY-KUWAIT.jpg" class="d-block w-100" alt="Main Banner 3">
+            </div>
+            <div class="carousel-item active">
+                <img src="https://www.tvbeurope.com/wp-content/uploads/2019/06/cat-Banner_OLED_Z9_8K.jpg" class="d-block w-100" alt="Main Banner 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://cdn.vectorstock.com/i/1000v/03/54/realistic-cosmetic-banner-makeup-products-sale-vector-50040354.jpg" class="d-block w-100" alt="Main Banner 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://cdnb.artstation.com/p/assets/images/images/072/045/361/large/bharat-arora-shoes-adver-copy.jpg?1706524868" class="d-block w-100" alt="Main Banner 3">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://web.larue.com.kh/image/vcache/catalog/Men-Fashion-1920x550.webp" class="d-block w-100" alt="Main Banner 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainBannerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainBannerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <style>
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+        }
+    </style>
+
+
+    <div class="banner-overlay">
+            <!-- Include Google Fonts (optional but recommended for better fonts) -->
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+        <!-- Hero Section -->
+        <div class="text-start p-5 rounded-4 shadow-sm mt-2" style="background: linear-gradient(135deg, #2E3192, #1BFFFF); font-family: 'Poppins', sans-serif; color: #fff;">
+            <h1 class="display-4 fw-bold mb-3">
+                Discover <span style="color: #FFD700;">Amazing Products</span>
+            </h1>
+            <p class="lead mb-4">Find everything you need – curated just for you!</p>
+
+            <a href="/products" class="btn btn-lg btn-light text-primary fw-semibold px-5 py-2 shadow-sm rounded-pill hover-scale">
+                <i class="bi bi-bag-fill me-2"></i> Shop Now
+            </a>
+        </div>
+
+
+    </div>
+    </div>
+
+
+
+
+    <div class="container my-5 category-section">
+        <h2 class="text-center mb-4">Shop by Category</h2>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
+            <div class="col" th:each="c : ${category}">
+                <a th:href="@{'/products?category=' + ${c.name}}">
+                    <div class="card h-100 shadow-sm border-0 rounded-3 category-card">
+                        <img th:src="@{'/img/category_img/' + ${c.imageName}}" class="card-img-top" alt="Category Image">
+                        <div class="card-body text-center category-card-body">
+                            <h6 th:text="${c.name}" class="fw-semibold"></h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border: 2px solid #000; width: 80%; margin: 20px auto;">
+
+    <div class="container-fluid bg-light py-5 latest-products-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Latest Products</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+                <div class="col" th:each="p : ${product}">
+                    <a th:href="@{/product/{id}(id=${p.id})}">
+                        <div class="card h-100 shadow-sm border-0 rounded-3 product-card">
+                            <img th:src="@{'/img/product_img/' + ${p.image}}" class="card-img-top" alt="Product Image">
+                            <div class="card-body text-center product-card-body">
+                                <h6 th:text="${p.title}" class="fw-semibold"></h6>
+                                <p class="text-muted small" th:if="${p.description}" th:text="${#strings.abbreviate(p.description, 50)}"></p>
+                                <p class="mb-0 fw-bold" th:if="${p.price}">₹<span th:text="${p.price}"></span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2 promotional-banner">
+        <img src="/img/logo/banner.jpg" class="img-fluid w-100" alt="Sale Promotion">
+    </div>
+
+    <footer class="bg-dark text-white mt-5 pt-4 pb-3 footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-3 col-md-6">
+                    <h5>Cartify</h5>
+                    <p>Making your shopping smarter, faster, and better.</p>
+                    <ul class="list-unstyled">
+                        <li><strong>Phone:</strong> +91 98765 43210</li>
+                        <li><strong>Email:</strong> <a href="mailto:support@cartify@2025.in">support@cartify@2025.in</a></li>
+                        <li><strong>Address:</strong> 123 Market Street, Vapi, India</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Connect With Us</h5>
+                    <ul class="list-unstyled d-flex gap-3">
+                        <li><a href="#" target="_blank"><i class="bi bi-facebook fs-4"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bi bi-instagram fs-4"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="bi bi-twitter fs-4"></i></a></li>
+                    </ul>
+                    <div class="mt-3">
+                        <h5>Subscribe to Our Newsletter</h5>
+                        <form>
+                            <div class="input-group">
+                                <input type="email" class="form-control form-control-sm" placeholder="Your Email">
+                                <button class="btn btn-outline-light btn-sm" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Payment Options</h5>
+                    <ul class="list-unstyled d-flex gap-2">
+                        <li><img src="/img/logo/visa.svg" alt="Visa" height="30"></li>
+                        <li><img src="/img/logo/mastercard.webp" alt="Mastercard" height="30"></li>
+                        <li><img src="/img/logo/Paypalpng.png" alt="PayPal" height="30"></li>
+                    </ul>
+                    <div class="ratio ratio-16x9 rounded shadow mt-3" style="border:2px solid #495057;">
+                        <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.730258894769!2d72.9114865751681!3d20.37638181135126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0f81a6cf9d917%3A0x85e9f96a7a79062e!2sVapi%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1714648473000!5m2!1sen!2sin"
+                                width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+
+                    </div>
+                </div>
+            </div>
+            <hr class="border-light mt-4">
+            <div class="text-center">
+                <p class="mb-0">© 2025 Cartify. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* Add any additional styling for the footer here */
+        .footer a {
+            color: #adb5bd !important;
+            text-decoration: none !important;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #fff !important;
+        }
+
+        .footer h5 {
+            color: #fff;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #6c757d;
+            padding-bottom: 8px;
+        }
+    </style>
+
+</section>
+
+</body>
+</html>

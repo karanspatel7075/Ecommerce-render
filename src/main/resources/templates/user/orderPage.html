@@ -1,0 +1,164 @@
+<!--Advance-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | ShopEase</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="row g-4 shadow-lg p-4 bg-white rounded-4">
+
+          <!-- ✅ One single form wrapping entire content -->
+          <form action="/user/saveOrder" method="post" id="orderPage" class="row g-4 shadow-lg p-4 bg-white rounded-4">
+
+          <!-- Left Side: Customer Details -->
+          <div class="col-md-6">
+            <div class="card border-0">
+              <div class="card-body">
+                <h3 class="card-title text-center mb-3">Place your <span class="text-primary fw-bold">Order</span></h3>
+                <p class="text-center text-muted mb-4">Gateway payment available</p>
+
+                <!-- Error message -->
+<!--                <div th:if="${session.error}" class="alert alert-danger text-center" th:text="${session.error}"></div>-->
+
+                  <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input type="text" class="form-control" name="firstName"  required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="text" class="form-control" name="mobileNo" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-control" name="address" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">City</label>
+                    <input type="text" class="form-control" name="city" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">State</label>
+                    <input type="text" class="form-control" name="state" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Pincode</label>
+                    <input type="number" class="form-control" name="pincode" required>
+                  </div>
+
+<!--                  <div class="d-grid mb-3">-->
+<!--                    <button type="submit" class="btn btn-primary">Sign In</button>-->
+<!--                  </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Payment Details -->
+
+          <div class="col-md-6">
+            <h3 class="text-center mb-3">Payment <span class="text-success fw-bold">Summary</span></h3>
+
+            <img src="https://www.apexon.com/wp-content/uploads/2024/11/can-checkout-experience-reduce-payment-disputes-thumb.jpg" class="img-fluid rounded-4" alt="Login Image">
+
+            <br>
+            <br>
+
+            <table class="table table-bordered table-hover">
+              <tbody>
+              <tr>
+                <th scope="row">Total Price</th>
+                <td class="text-end">₹[[${orderPrice}]]</td>
+              </tr>
+              <tr>
+                <th scope="row">Delivery Fee</th>
+                <td class="text-end">₹250</td>
+              </tr>
+              <tr>
+                <th scope="row">Tax</th>
+                <td class="text-end">₹1000</td>
+              </tr>
+              <tr class="table-active">
+                <th scope="row">Grand Total</th>
+                <td class="text-end">₹[[${totalOrderPrice}]]</td>
+                <input type="hidden" name="totalOrderPrice" th:value="${totalOrderPrice}" />
+              </tr>
+              </tbody>
+            </table>
+
+<!--            <form action="#" method="post">-->
+              <div class="mt-4">
+                <div class="mb-3">
+                  <label class="form-label">Select Payment Type</label>
+                  <select class="form-select" name="paymentType" required>
+                    <option selected disabled>--- select ---</option>
+                    <option value="COD">Cash On Delivery</option>
+                    <option value="ONLINE">Online Payment</option>
+                  </select>
+                </div>
+
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-success w-100" id="placeOrderBtn">
+                    <i class="fa-solid fa-lock me-2"></i>Place Order
+                  </button>
+                </div>
+              </div>
+
+            <div class="text-center mt-3">
+              <small class="text-muted">Payment integration ahead...</small>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--  <form method="post" action="/user/createPaymentSession">-->
+<!--    <input type="hidden" name="totalOrderPrice" th:value="${totalOrderPrice}" />-->
+
+
+<!--    <div class="mt-4">-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Select Payment Type</label>-->
+<!--        <select class="form-select" name="paymentType" required onchange="checkPaymentType(this.value)">-->
+<!--          <option selected disabled>&#45;&#45;select&#45;&#45;</option>-->
+<!--          <option value="COD">Cash On Delivery</option>-->
+<!--          <option value="ONLINE">Online Payment</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <button type="submit" class="btn btn-primary">Proceed to Payment</button>-->
+<!--  </form>-->
+</section>
+
+<!-- Font Awesome for lock icon -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+<!--            </form>-->

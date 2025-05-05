@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::Layout(~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+  <style>
+    a.product-link {
+        text-decoration: none !important;
+        color: inherit;
+    }
+
+    a.product-link:hover {
+        color: inherit;
+    }
+
+    .product-price {
+        color: #000 !important;
+    }
+  </style>
+</head>
+<body>
+<section>
+
+  <!-- Search Bar -->
+  <div class="container-fluid bg-primary p-4">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form action="products" method="get">
+          <div class="input-group">
+            <input type="text" class="form-control" name="ch" placeholder="Search products here...">
+            <button class="btn btn-light text-dark ms-3 col-md-2">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category + Products Row -->
+  <div class="container-fluid mt-1">
+    <div class="row">
+
+      <!-- Category List (Left Column) -->
+      <div class="col-md-2 p-0">
+        <div class="card shadow-sm p-0 mb-5 bg-body-tertiary rounded">
+          <div class="card-body">
+            <div class="list-group">
+              <p class="fs-5">Category</p>
+              <a th:href="@{/products}"
+                 th:class="${paramValue == null or paramValue == ''} ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action'"
+                 aria-current="true">All Category
+              </a>
+
+              <a th:each="c : ${categories}"
+                 th:href="@{'/products?category=' + ${c.name}}"
+                 th:classappend="${paramValue == c.name} ? 'active':'' "
+                 class="list-group-item list-group-item-action"
+                 th:text="${c.name}"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products (Right Column) -->
+      <div class="col-md-10">
+        <div class="bg-light py-5 latest-products-section">
+          <div class="container">
+            <h2 class="text-center mb-4">Latest Products</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+              <div class="col" th:each="p : ${product}">
+                <a th:href="@{/product/{id}(id=${p.id})}" class="product-link" style="text-decoration: none;">
+                  <div class="card h-100 shadow-sm border-0 rounded-3 product-card">
+                    <img th:src="@{'/img/product_img/' + ${p.image}}" class="card-img-top"
+                         alt="Product Image" style="height: 180px; object-fit: cover;">
+                    <div class="card-body text-center product-card-body">
+                      <h6 th:text="${p.title}" class="fw-semibold"></h6>
+
+                      <!-- Price Section -->
+                      <p class="mb-1 fw-bold product-price fs-6">
+                        ₹<span th:text="${p.discountedPrice}"></span>
+                      </p>
+                      <p class="text-muted small mb-2">
+                                                <span class="text-decoration-line-through">₹<span
+                                                        th:text="${p.price}"></span></span>
+                        <span class="text-success ms-2">(<span
+                                th:text="${p.discount}"></span>% off)</span>
+                      </p>
+
+                      <!-- Optional Description -->
+                      <p class="text-muted small" th:if="${p.description}"
+                         th:text="${#strings.abbreviate(p.description, 50)}"></p>
+
+                      <!-- CTA -->
+                      <a class="btn btn-outline-primary btn-sm mt-2"
+                         th:href="@{/product/{id}(id=${p.id})}">View Details</a>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example center" class="mt-4">
+          <ul class="pagination d-flex justify-content-center">
+
+            <!-- Previous Button -->
+            <li class="page-item" th:classappend="${isFirst} ? 'disabled'">
+              <a class="page-link"
+                 th:href="@{/products(category=${paramValue}, pageNo=${pageNo - 1}, pageSize=${pageSize})}">Previous</a>
+            </li>
+
+            <!-- Page Numbers -->
+            <li class="page-item"
+                th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                th:classappend="${i == pageNo} ? 'active'">
+              <a class="page-link"
+                 th:href="@{/products(category=${paramValue}, pageNo=${i}, pageSize=${pageSize})}"
+                 th:text="${i + 1}"></a>
+            </li>
+
+            <!-- Next Button -->
+            <li class="page-item" th:classappend="${isLast} ? 'disabled'">
+              <a class="page-link"
+                 th:href="@{/products(category=${paramValue}, pageNo=${pageNo + 1}, pageSize=${pageSize})}">Next</a>
+            </li>
+
+          </ul>
+        </nav>
+
+
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <style>
+          /* Add any additional styling for the footer here */
+          .footer a {
+              color: #adb5bd !important;
+              text-decoration: none !important;
+              transition: color 0.3s ease;
+          }
+
+          .footer a:hover {
+              color: #fff !important;
+          }
+
+          .footer h5 {
+              color: #fff;
+              margin-bottom: 15px;
+              border-bottom: 1px solid #6c757d;
+              padding-bottom: 8px;
+          }
+        </style>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white mt-5 pt-4 pb-3 footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6">
+          <h5>Cartify</h5>
+          <p>Making your shopping smarter, faster, and better.</p>
+          <ul class="list-unstyled">
+            <li><strong>Phone:</strong> +91 98765 43210</li>
+            <li><strong>Email:</strong> <a href="mailto:support@cartify@2025.in">support@cartify@2025.in</a></li>
+            <li><strong>Address:</strong> 123 Market Street, Vapi, India</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Connect With Us</h5>
+          <ul class="list-unstyled d-flex gap-3">
+            <li><a href="#" target="_blank"><i class="bi bi-facebook fs-4"></i></a></li>
+            <li><a href="#" target="_blank"><i class="bi bi-instagram fs-4"></i></a></li>
+            <li><a href="#" target="_blank"><i class="bi bi-twitter fs-4"></i></a></li>
+          </ul>
+          <div class="mt-3">
+            <h5>Subscribe to Our Newsletter</h5>
+            <form>
+              <div class="input-group">
+                <input type="email" class="form-control form-control-sm" placeholder="Your Email">
+                <button class="btn btn-outline-light btn-sm" type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Payment Options</h5>
+          <ul class="list-unstyled d-flex gap-2">
+            <li><img src="/img/logo/visa.svg" alt="Visa" height="30"></li>
+            <li><img src="/img/logo/mastercard.webp" alt="Mastercard" height="30"></li>
+            <li><img src="/img/logo/Paypalpng.png" alt="PayPal" height="30"></li>
+          </ul>
+          <div class="ratio ratio-16x9 rounded shadow mt-3" style="border:2px solid #495057;">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.730258894769!2d72.9114865751681!3d20.37638181135126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0f81a6cf9d917%3A0x85e9f96a7a79062e!2sVapi%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1714648473000!5m2!1sen!2sin"
+                    width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+          </div>
+        </div>
+      </div>
+      <hr class="border-light mt-4">
+      <div class="text-center">
+        <p class="mb-0">© 2025 Cartify. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</section>
+
+</body>
+</html>
