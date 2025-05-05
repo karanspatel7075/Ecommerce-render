@@ -15,8 +15,8 @@ import javax.crypto.SecretKey;
 @Service
 public class StripeService {
 
-    @Value("${stripe.secretKey}")
-    private String secretKey;
+    @Value("${stripe.secret-key}")
+    private String stripeSecretKey;
 
     @GetMapping("/success")
     public String loadSuccess() {
@@ -29,7 +29,7 @@ public class StripeService {
     }
 
     public StripeResponse checkoutTotalAmount(Double totalAmount) {
-        Stripe.apiKey = "sk_test_51RIDAY4Cqlk051Qshwj1X6PKq840rL6rhaSQNoNnjgDOhxyGaFH1HnAhRRx1aIumUsoSmHN7W1pRX5nKsaH1Tu7M001w17CTvl";  // Use the secret key from properties
+        Stripe.apiKey = stripeSecretKey;  // Use the secret key from properties
 
         SessionCreateParams.LineItem.PriceData.ProductData productData =
                 SessionCreateParams.LineItem.PriceData.ProductData.builder()
