@@ -16,7 +16,7 @@
       <img th:src="@{'/profile_img/' + ${profile.profileImage}}"
            alt="Profile Picture"
            class="w-75 h-30 rounded-circle border-4 border-primary object-cover mb-4">
-      <h2 class="h4 text-dark text-center">[[${user.name}]]</h2>
+      <h2 class="h4 text-dark text-center">[[${profile.name}]]</h2>
       <p class="text-muted text-center">Aspiring Software Engineer</p>
 
       <div class="w-100 mt-4">
@@ -47,42 +47,42 @@
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Full Name</div>
-            <div class="h5">[[${user.name}]]</div>
+            <div class="h5">[[${profile.name}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Email</div>
-            <div class="h5">[[${user.email}]]</div>
+            <div class="h5">[[${profile.email}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Mobile</div>
-            <div class="h5">[[${user.mobileNumber}]]</div>
+            <div class="h5">[[${profile.mobileNumber}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Address</div>
-            <div class="h5">[[${user.address}]], [[${user.city}]], [[${user.state}]] - [[${user.pincode}]]</div>
+            <div class="h5">[[${profile.address}]], [[${profile.city}]], [[${profile.state}]] - [[${profile.pincode}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Role</div>
-            <div class="h5">[[${user.role}]]</div>
+            <div class="h5">[[${profile.role}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Account Status</div>
-            <div class="h5">[[${user.isEnable}]]</div>
+            <div class="h5">[[${profile.isEnable}]]</div>
           </div>
         </div>
       </div>
