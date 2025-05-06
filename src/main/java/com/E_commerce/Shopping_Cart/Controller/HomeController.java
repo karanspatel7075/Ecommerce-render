@@ -169,18 +169,28 @@ public class HomeController {
             UserDtl saveUser = userService.saveUser(userDtl);
 
             if(saveUser != null) {
-                try {
-                    File savefile = new ClassPathResource("static/img/profile_img").getFile();
+//                try {
+//                    File savefile = new ClassPathResource("static/img/profile_img").getFile();
+//
+//                    Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+file.getOriginalFilename());
+//
+//                    Files.copy(file.getInputStream(), paths, StandardCopyOption.REPLACE_EXISTING);
+//
+//                    System.out.println("Image saved at : " + paths);
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
 
-                    Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+file.getOriginalFilename());
-
-                    Files.copy(file.getInputStream(), paths, StandardCopyOption.REPLACE_EXISTING);
-
-                    System.out.println("Image saved at : " + paths);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                String uploadDir = System.getProperty("user.dir") + "/uploads/profile_img/";
+                File directory = new File(uploadDir);
+                if (!directory.exists()) {
+                    directory.mkdirs();
                 }
+
+                Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
+                Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+
                 session.setAttribute("Success", "Profile saved successfully");
             }
             else {
