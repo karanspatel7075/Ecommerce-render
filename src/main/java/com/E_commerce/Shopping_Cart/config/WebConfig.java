@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/profile_img/**")
-                .addResourceLocations("file:" + System.getProperty("user.dir") + "/uploads/profile_img/");
+        registry.addResourceHandler("/images/**")
+                .addResourceLocations("file:Shopping_Cart/images/");
     }
 }
