@@ -129,7 +129,7 @@ public class UserController {
                 .mapToDouble(cart -> cart.getTotalPrice() != null ? cart.getTotalPrice() : 0.0)
                 .sum();
         m.addAttribute("totalOrderPrice", totalOrderPrice);
-        return "/user/cart";
+        return "user/cart";
     }
 
     private UserDtl getLoggedInUserDetails(Principal p) {
@@ -170,7 +170,7 @@ public class UserController {
                 .sum() + 250 + 100;
         m.addAttribute("orderPrice", orderPrice);
         m.addAttribute("totalOrderPrice", totalOrderPrice);
-        return "/user/orderPage";
+        return "user/orderPage";
     }
 
 //    @PostMapping("/saveOrder")
@@ -224,7 +224,7 @@ public class UserController {
         if ("COD".equalsIgnoreCase(paymentType)) {
             // ➡ For Cash On Delivery, directly show success page
             cartService.clearCartByUserId(user.getId());
-            return "/user/successPage"; // Your COD success page
+            return "user/successPage"; // Your COD success page
         } else if ("ONLINE".equalsIgnoreCase(paymentType)) {
             // ➡ For Online Payment, redirect to Stripe
             StripeResponse response = stripeService.checkoutTotalAmount(totalOrderPrice);
@@ -234,11 +234,11 @@ public class UserController {
                 return "redirect:" + response.getSessionUrl();
             } else {
                 model.addAttribute("errorMsg", response.getMessage());
-                return "/user/failedPage";
+                return "user/failedPage";
             }
         } else {
             model.addAttribute("errorMsg", "Invalid payment type selected!");
-            return "/user/failedPage";
+            return "user/failedPage";
         }
     }
 
@@ -260,12 +260,12 @@ public class UserController {
 
     @GetMapping("/success")
     public String loadSuccess() {
-        return "/user/successPage";
+        return "user/successPage";
     }
 
     @GetMapping("/paymentFailed")
     public String failedSuccess() {
-        return "/user/failedPage";
+        return "user/failedPage";
     }
 
     @GetMapping("/userOrders")
@@ -273,7 +273,7 @@ public class UserController {
         UserDtl loginuser = getLoggedInUserDetails(p);
         List<ProductOrder> orders = orderService.getOrdersByUser(loginuser.getId());
         m.addAttribute("getOrders", orders);
-        return "/user/my_orders";
+        return "user/my_orders";
     }
 
     @GetMapping("/cancelOrder")
