@@ -94,7 +94,7 @@ public class AdminController {
 
         if (savedProduct != null) {
             try {
-                File savefile = new ClassPathResource("Shopping_Cart/images/profile_img").getFile(); // it's been stored in target folder
+                File savefile = new ClassPathResource("Shopping_Cart/images/product_img").getFile(); // it's been stored in target folder
 
                 // Ensure the directory exists
                 if (!savefile.exists()) {
