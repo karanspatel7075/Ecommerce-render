@@ -325,7 +325,7 @@ public class AdminController {
 
         m.addAttribute("userType", type);
         m.addAttribute("users", users);
-        return  "/admin/users";
+        return  "admin/users";
     }
 
     @GetMapping("/updateStatus")
@@ -352,7 +352,7 @@ public class AdminController {
         m.addAttribute("totalPages", page.getTotalPages());
         m.addAttribute("isFirst", page.isFirst());
         m.addAttribute("isLast", page.isLast());
-         return "/admin/orders";
+         return "admin/orders";
     }
 
     @PostMapping("/updateStatus")
@@ -409,7 +409,7 @@ public class AdminController {
         if (ObjectUtils.isEmpty(page.getContent())) {
             session.setAttribute("errorMsg", "No orders found with the provided order ID");
         }
-        return "/admin/orders"; //  // Return the view with the orders
+        return "admin/orders"; //  // Return the view with the orders
     }
 
     // Same from Home controller
@@ -417,7 +417,7 @@ public class AdminController {
     public String searchProduct(@RequestParam String ch, Model m) {
         List<AddProduct> search = productService.searchProduct(ch);
         m.addAttribute("listOfProduct", search);
-        return "/admin/view_Products";
+        return "admin/view_Products";
     }
 
     @GetMapping("/add-admin")
@@ -432,7 +432,7 @@ public class AdminController {
             UserDtl user = userService.getUserByEmail(email);
             model.addAttribute("profile", user);
         }
-        return "/admin/admin_profile";
+        return "admin/admin_profile";
     }
 
     // Updating
