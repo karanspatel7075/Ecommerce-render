@@ -259,7 +259,7 @@ public class AdminController {
         m.addAttribute("isLast", page.isLast());
         m.addAttribute("ch", ch);
 
-        return "admin/view_Products";  // mistake you called /admin/view_product   instead of /admin/product's'
+        return "admin/view_products";  // mistake you called /admin/view_product   instead of /admin/product's'
     }
 
 
@@ -420,7 +420,7 @@ public class AdminController {
         return "admin/view_Products";
     }
 
-    @GetMapping("/add-admin")
+    @GetMapping("/addAdmin")
     public String adminAdd() {
         return "/admin/add_admin";
     }
