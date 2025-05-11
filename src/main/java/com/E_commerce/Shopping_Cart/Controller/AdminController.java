@@ -154,7 +154,7 @@ public class AdminController {
 
             if(savedCategory != null) {
                 try {
-                    File savefile = new ClassPathResource("static/img/category_img").getFile();
+                    File savefile = new File("images/category_image");
 
                     Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 
@@ -213,7 +213,7 @@ public class AdminController {
             if (update != null) {
 
                 try {
-                    File savefile = new ClassPathResource("static/img/category_img").getFile();
+                    File savefile = new File("images/category_image");
 
                     Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 
@@ -457,13 +457,9 @@ public class AdminController {
 
         if(saveUser != null) {
             try {
-                String uploadDir = System.getProperty("user.dir") + "/uploads/profile_img/";
-                File directory = new File(uploadDir);
-                if (!directory.exists()) {
-                    directory.mkdirs();
-                }
+                File savefile = new File("images/profile_image");
 
-                Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
+                Path path = Paths.get(savefile + File.separator + file.getOriginalFilename());
                 Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             }
             catch (Exception e) {

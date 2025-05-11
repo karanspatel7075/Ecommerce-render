@@ -182,13 +182,9 @@ public class HomeController {
 //                    e.printStackTrace();
 //                }
 
-                String uploadDir = System.getProperty("user.dir") + "/uploads/profile_img/";
-                File directory = new File(uploadDir);
-                if (!directory.exists()) {
-                    directory.mkdirs();
-                }
+                File savefile = new File("images/profile_image");
 
-                Path path = Paths.get(uploadDir + File.separator + file.getOriginalFilename());
+                Path path = Paths.get(savefile + File.separator + file.getOriginalFilename());
                 Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
                 session.setAttribute("Success", "Profile saved successfully");

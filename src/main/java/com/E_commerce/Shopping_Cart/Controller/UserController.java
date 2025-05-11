@@ -361,7 +361,7 @@ public class UserController {
         if (saveUpdate != null) {
 
             try {
-                File savefile = new ClassPathResource("static/img/profile_img").getFile();
+                File savefile = new File("images/profile_image");
 
                 Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+image.getOriginalFilename());
 

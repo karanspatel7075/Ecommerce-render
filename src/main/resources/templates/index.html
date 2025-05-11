@@ -296,7 +296,7 @@
             <div class="col" th:each="c : ${category}">
                 <a th:href="@{'/products?category=' + ${c.name}}">
                     <div class="card h-100 shadow-sm border-0 rounded-3 category-card">
-                        <img th:src="@{'/img/category_img/' + ${c.imageName}}" class="card-img-top" alt="Category Image">
+                        <img th:src="@{'/images/category_image/' + ${c.imageName}}" class="card-img-top" alt="Category Image">
                         <div class="card-body text-center category-card-body">
                             <h6 th:text="${c.name}" class="fw-semibold"></h6>
                         </div>

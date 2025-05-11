@@ -70,7 +70,7 @@
               <div class="col" th:each="p : ${product}">
                 <a th:href="@{/product/{id}(id=${p.id})}" class="product-link" style="text-decoration: none;">
                   <div class="card h-100 shadow-sm border-0 rounded-3 product-card">
-                    <img th:src="@{'/img/product_img/' + ${p.image}}" class="card-img-top"
+                    <img th:src="@{'/images/product_image/' + ${p.image}}" class="card-img-top"
                          alt="Product Image" style="height: 180px; object-fit: cover;">
                     <div class="card-body text-center product-card-body">
                       <h6 th:text="${p.title}" class="fw-semibold"></h6>
