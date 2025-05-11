@@ -94,7 +94,7 @@ public class AdminController {
 
         if (savedProduct != null) {
             try {
-                File savefile = new File("Shopping_Cart/images/product_image"); // it's been stored in target folder
+                File savefile = new File("images/product_image"); // it's been stored in target folder
 
                 // Ensure the directory exists
                 if (!savefile.exists()) {
