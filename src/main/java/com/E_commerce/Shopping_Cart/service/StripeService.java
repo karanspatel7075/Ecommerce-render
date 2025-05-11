@@ -20,12 +20,12 @@ public class StripeService {
 
     @GetMapping("/success")
     public String loadSuccess() {
-        return "/user/successPage";
+        return "user/successPage";
     }
 
     @GetMapping("/paymentFailed")
     public String failedSuccess() {
-        return "/user/failedPage";
+        return "user/failedPage";
     }
 
     public StripeResponse checkoutTotalAmount(Double totalAmount) {

@@ -154,7 +154,13 @@ public class AdminController {
 
             if(savedCategory != null) {
                 try {
-                    File savefile = new File("images/category_image");
+                    String uploadDir = System.getProperty("user.dir") + "/images/category_image";
+                    File savefile = new File(uploadDir);
+
+                    // Ensure the directory exists
+                    if (!savefile.exists()) {
+                        savefile.mkdirs();
+                    }
 
                     Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 
