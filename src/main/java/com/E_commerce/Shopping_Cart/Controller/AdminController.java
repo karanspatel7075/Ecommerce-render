@@ -94,7 +94,7 @@ public class AdminController {
 
         if (savedProduct != null) {
             try {
-                File savefile = new ClassPathResource("Shopping_Cart/images/product_img").getFile(); // it's been stored in target folder
+                File savefile = new File("images/product_image"); // it's been stored in target folder
 
                 // Ensure the directory exists
                 if (!savefile.exists()) {
@@ -114,6 +114,7 @@ public class AdminController {
         } else {
             session.setAttribute("Failed", "Something went wrong in server");
         }
+        System.out.println("Product saved successfully");
         return "redirect:/admin/loadAddProduct";
     }
 
@@ -422,7 +423,7 @@ public class AdminController {
 
     @GetMapping("/addAdmin")
     public String adminAdd() {
-        return "/admin/add_admin";
+        return "admin/add_admin";
     }
 
     @GetMapping("/adminProfile")
