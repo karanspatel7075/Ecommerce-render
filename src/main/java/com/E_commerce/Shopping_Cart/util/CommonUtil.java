@@ -55,7 +55,7 @@ public class CommonUtil {
         helper.setFrom("ffg19162@gmail.com", "Shopping_Cart");
         helper.setTo(order.getOrderAddress().getEmail());
 
-        String msg = "[name], Thank you for your ordering! <b>[orderStatus]</b>.<br><br>" +
+        String msg = "[name], Thank you for your ordering! .<br><br>" +
                 "🧾 <b>Order Summary:</b><br>" +
                 "• Product Category: [Category Name]<br>" +
                 "• Product Name: [Product Name]<br>" +

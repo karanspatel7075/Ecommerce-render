@@ -361,7 +361,8 @@ public class UserController {
         if (saveUpdate != null) {
 
             try {
-                File savefile = new File("images/profile_image");
+                String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
+                File savefile = new File(uploadDir);
 
                 Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+image.getOriginalFilename());
 
