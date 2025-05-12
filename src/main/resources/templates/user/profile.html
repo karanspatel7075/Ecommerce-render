@@ -13,10 +13,10 @@
   <div class="container-fluid min-vh-100 d-flex">
     <!-- Sidebar -->
     <div class="bg-white shadow-lg p-4 flex-column align-items-center border-end" style="width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-      <img th:src="@{'/images/profile_image/' + (${Userprofile.profileImage} ?: 'default.jpg')}"
+      <img th:src="@{'/images/profile_image/' + ${user.profileImage}}"
            alt="Profile Picture"
            class="w-75 h-30 rounded-circle border-4 border-primary object-cover mb-4">
-      <h2 class="h4 text-dark text-center">[[${Userprofile.name}]]</h2>
+      <h2 class="h4 text-dark text-center">[[${user.name}]]</h2>
       <p class="text-muted text-center">Cartify.com</p>
 
       <div class="w-100 mt-4">
@@ -47,42 +47,42 @@
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Full Name</div>
-            <div class="h5">[[${Userprofile.name}]]</div>
+            <div class="h5">[[${user.name}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Email</div>
-            <div class="h5">[[${Userprofile.email}]]</div>
+            <div class="h5">[[${user.email}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Mobile</div>
-            <div class="h5">[[${Userprofile.mobileNumber}]]</div>
+            <div class="h5">[[${user.mobileNumber}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Address</div>
-            <div class="h5">[[${Userprofile.address}]], [[${Userprofile.city}]], [[${Userprofile.state}]] - [[${Userprofile.pincode}]]</div>
+            <div class="h5">[[${user.address}]], [[${user.city}]], [[${user.state}]] - [[${user.pincode}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Role</div>
-            <div class="h5">[[${Userprofile.role}]]</div>
+            <div class="h5">[[${user.role}]]</div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="card shadow-sm p-4">
             <div class="text-muted">Account Status</div>
-            <div class="h5">[[${Userprofile.isEnable}]]</div>
+            <div class="h5">[[${user.isEnable}]]</div>
           </div>
         </div>
       </div>

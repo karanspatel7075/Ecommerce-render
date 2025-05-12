@@ -310,11 +310,12 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profile(Principal p,  Model model) {
+    public String Userprofile(Principal p,  Model model) {
         if (p != null) {
             String email = p.getName();
             UserDtl user = userService.getUserByEmail(email);
-            model.addAttribute("Userprofile", user);
+            System.out.println("Image file: " + user.getProfileImage());
+            model.addAttribute("user", user);
         }
         return "user/profile";
     }
