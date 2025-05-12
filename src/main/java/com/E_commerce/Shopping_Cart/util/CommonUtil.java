@@ -55,12 +55,12 @@ public class CommonUtil {
         helper.setFrom("ffg19162@gmail.com", "Shopping_Cart");
         helper.setTo(order.getOrderAddress().getEmail());
 
-        String msg = "[name], Thank you for your ordering! .<br><br>" +
+        String msg = "[name], thank you for your order!<br><br>" +
                 "🧾 <b>Order Summary:</b><br>" +
-                "• Product Category: [Category Name]<br>" +
-                "• Product Name: [Product Name]<br>" +
-                "• Quantity: [Quantity]<br>" +
-                "• Payment Method: [Payment Type]<br><br>" +
+                "&bull; <b>Product Category:</b> [Category Name]<br>" +
+                "&bull; <b>Product Name:</b> [Product Name]<br>" +
+                "&bull; <b>Quantity:</b> [Quantity]<br>" +
+                "&bull; <b>Payment Method:</b> [Payment Type]<br><br>" +
                 "We appreciate your purchase and will begin processing your order shortly.";
 
         OrderStatus[] values = OrderStatus.values();
