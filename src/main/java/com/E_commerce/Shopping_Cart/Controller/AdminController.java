@@ -282,6 +282,7 @@ public class AdminController {
         return "redirect:/admin/getProducts";
     }
 
+
     // Just showing editing page
     @GetMapping("/editProduct/{id}")
     public String updateProduct(@PathVariable("id") int id, Model themodel) {
