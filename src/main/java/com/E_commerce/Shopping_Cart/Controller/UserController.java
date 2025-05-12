@@ -314,7 +314,7 @@ public class UserController {
         if (p != null) {
             String email = p.getName();
             UserDtl user = userService.getUserByEmail(email);
-            model.addAttribute("profile", user);
+            model.addAttribute("Userprofile", user);
         }
         return "user/profile";
     }
@@ -363,6 +363,10 @@ public class UserController {
             try {
                 String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
                 File savefile = new File(uploadDir);
+
+                if (!savefile.exists()) {
+                    savefile.mkdirs();
+                }
 
                 Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+image.getOriginalFilename());
 

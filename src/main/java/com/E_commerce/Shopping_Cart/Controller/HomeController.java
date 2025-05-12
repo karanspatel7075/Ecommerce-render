@@ -182,10 +182,17 @@ public class HomeController {
 //                    e.printStackTrace();
 //                }
 
-                File savefile = new File("images/profile_image");
+                String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
+                File savefile = new File(uploadDir);
 
-                Path path = Paths.get(savefile + File.separator + file.getOriginalFilename());
-                Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+                // Ensure the directory exists
+                if (!savefile.exists()) {
+                    savefile.mkdirs();
+                }
+
+                Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+file.getOriginalFilename());
+
+                Files.copy(file.getInputStream(), paths, StandardCopyOption.REPLACE_EXISTING);
 
                 session.setAttribute("Success", "Profile saved successfully");
             }

@@ -221,6 +221,11 @@ public class AdminController {
                 try {
                     File savefile = new File("images/category_image");
 
+                    // Ensure the directory exists
+                    if (!savefile.exists()) {
+                        savefile.mkdirs();
+                    }
+
                     Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 
                     Files.copy(file.getInputStream(), paths, StandardCopyOption.REPLACE_EXISTING);
@@ -510,7 +515,12 @@ public class AdminController {
         if (saveUpdate != null) {
 
             try {
-                File savefile = new ClassPathResource("static/img/profile_img").getFile();
+                String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
+                File savefile = new File(uploadDir);
+
+                if (!savefile.exists()) {
+                    savefile.mkdirs();
+                }
 
                 Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+image.getOriginalFilename());
 
