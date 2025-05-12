@@ -90,12 +90,12 @@ public class HomeController {
 
         List<AddProduct> allProducts = productService.getAllActiveProductIgnoreCase("");
         System.out.println("Total active products: " + allProducts.size());
-        List<AddProduct> limited = allProducts.stream().limit(12).toList();
+        List<AddProduct> limited = allProducts.stream().limit(20).toList();
 
         model.addAttribute("listActive", categoryService.getAllActiveCategory());
 
         model.addAttribute("category", allActiveCategory);
-        model.addAttribute("product", allProducts);
+        model.addAttribute("product", limited); // ✅ Now passes only 12 products to the view
         return "index";
     }
 
@@ -182,13 +182,13 @@ public class HomeController {
 //                    e.printStackTrace();
 //                }
 
-                String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
-                File savefile = new File(uploadDir);
+                    String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
+                    File savefile = new File(uploadDir);
 
-                // Ensure the directory exists
-                if (!savefile.exists()) {
-                    savefile.mkdirs();
-                }
+                    // Ensure the directory exists
+                    if (!savefile.exists()) {
+                        savefile.mkdirs();
+                    }
 
                 Path paths = Paths.get(savefile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 

@@ -276,6 +276,11 @@ public class UserController {
         return "user/my_orders";
     }
 
+    @GetMapping("/index")
+    public String homePage() {
+        return "redirect:/index";
+    }
+
     @GetMapping("/cancelOrder")
     public String cancelOrder(@RequestParam("orderId") Integer orderId, @RequestParam("st") String st, HttpSession session) {
         if (orderRepository.existsById(orderId)) {

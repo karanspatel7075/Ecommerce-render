@@ -130,7 +130,7 @@
                 <div class="col" th:each="p : ${recommendedProducts}">
                   <a th:href="@{/product/{id}(id=${p.id})}" class="text-decoration-none text-dark">
                     <div class="card h-100 shadow-sm border-0 rounded-3 product-card">
-                      <img th:src="@{'/img/product_img/' + ${p.image}}" class="card-img-top" alt="Product Image">
+                      <img th:src="@{'/images/product_image/' + ${p.image}}" class="card-img-top" alt="Product Image">
                       <div class="card-body text-center product-card-body">
                         <h6 th:text="${p.title}" class="fw-semibold"></h6>
                         <p class="text-muted small" th:if="${p.description}" th:text="${#strings.abbreviate(p.description, 50)}"></p>
