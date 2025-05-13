@@ -6,11 +6,17 @@ A robust and full-featured e-commerce platform that enables users to browse and 
 🚀 Features Overview
 
 ------- 👨‍💼 User Panel -------
+
 🔐 User Registration & Login (Secure with Spring Security)
+
 🔍 Search & Paginate Products
+
 🛒 Manage Cart (Add / Update / Remove)
+
 📦 Track Orders
+
 📧 Email Confirmation on Order Placement
+
 
 💳 Place Orders:
 ~ Cash On Delivery (COD)
