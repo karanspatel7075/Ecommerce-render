@@ -1,5 +1,5 @@
-🛍️ E-Commerce Web Application
-Built with Spring Boot, HTML/CSS, and Bootstrap
+🛍️ E-Commerce Web Application ( cartify )
+Built with Spring Boot, Thymeleaf, HTML/CSS, and Bootstrap
 
 A robust and full-featured e-commerce platform that enables users to browse and purchase products with ease, while offering admins powerful tools to manage the catalog, orders, and users. Integrated with Stripe for secure payments and JavaMailSender for order notifications.
 
@@ -25,6 +25,7 @@ A robust and full-featured e-commerce platform that enables users to browse and 
 ~ Online Payment via Stripe
 
 
+
 ------- 🛠️ Admin Panel -------
 
 🧑‍💼 Role-based Access Control (Admin / User)
@@ -39,6 +40,7 @@ A robust and full-featured e-commerce platform that enables users to browse and 
 ~ ✅ Update Order Status (Placed → Shipped → Delivered)
 
 ~ 📧 Auto Email Notification to Users
+
 
 
 🌐 Live Demo
