@@ -1,5 +1,7 @@
 # 🛍️ Cartify – E-Commerce Web Application
 
+<img width="1536" height="1024" alt="ChatGPT Image Dec 24, 2025, 01_15_59 PM" src="https://github.com/user-attachments/assets/c96f0d5e-e065-41f8-9170-cc79c2a0827a" />
+
 Cartify is a **full-featured e-commerce web application** built using **Spring Boot, Thymeleaf, HTML/CSS, and Bootstrap**.  
 It provides a smooth shopping experience for users and a powerful admin panel for managing products, categories, orders, and users.
 
@@ -92,6 +94,25 @@ https://ecommerce-render-2.onrender.com
 
 ---
 
+## 🚢 Deployment (In Progress)
+
+- Dockerized backend service
+- Backend deployed on Render
+- Cloud database support:
+  - Database hosted on Aiven (MySQL Cloud)
+- Stripe integrated for secure online payments
+- Designed for future **microservices scalability**
+
+---
+
+## 📄 License
+
+This project is developed for **learning, demonstration, and portfolio purposes**.
+
+---
+
+### ⭐ If you like this project, don’t forget to star the repository!
+
 ## 🗄️ Project Structure
 
 ```bash
@@ -110,3 +131,4 @@ Cartify/
 │
 ├── 📄 application.properties
 └── 📄 README.md
+
