@@ -94,7 +94,7 @@ https://ecommerce-render-2.onrender.com
 
 ---
 
-## 🚢 Deployment (In Progress)
+## 🚢 Deployment 
 
 - Dockerized backend service
 - Backend deployed on Render
