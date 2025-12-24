@@ -1,108 +1,112 @@
-🛍️ E-Commerce Web Application ( cartify )
-Built with Spring Boot, Thymeleaf, HTML/CSS, and Bootstrap
+# 🛍️ Cartify – E-Commerce Web Application
 
-A robust and full-featured e-commerce platform that enables users to browse and purchase products with ease, while offering admins powerful tools to manage the catalog, orders, and users. Integrated with Stripe for secure payments and JavaMailSender for order notifications.
+Cartify is a **full-featured e-commerce web application** built using **Spring Boot, Thymeleaf, HTML/CSS, and Bootstrap**.  
+It provides a smooth shopping experience for users and a powerful admin panel for managing products, categories, orders, and users.
 
+The platform supports **secure authentication**, **online payments via Stripe**, **order notifications via email**, and a **scalable backend architecture**.
 
-🚀 Features Overview
+---
 
-------- 👨‍💼 User Panel -------
+## 🚀 Features Overview
 
-🔐 User Registration & Login (Secure with Spring Security)
+---
 
-🔍 Search & Paginate Products
+### 👨‍💼 User Panel
 
-🛒 Manage Cart (Add / Update / Remove)
+🔐 Secure User Registration & Login (Spring Security)  
+🔍 Product Search with Pagination  
+🛒 Cart Management (Add / Update / Remove Products)  
+📦 Order Placement & Tracking  
+📧 Email Confirmation on Order Placement  
 
-📦 Track Orders
+💳 Payment Options:
+- Cash On Delivery (COD)
+- Online Payment via Stripe
 
-📧 Email Confirmation on Order Placement
+---
 
+### 🛠️ Admin Panel
 
-💳 Place Orders:
+🧑‍💼 Role-Based Access Control (Admin / User)  
+🗂️ Category Management (Create, Update, Delete)  
+📦 Product Management (CRUD Operations)  
+📋 Order Management Dashboard  
 
-~ Cash On Delivery (COD)
+Order Lifecycle Management:
+- ✅ Placed  
+- 🚚 Shipped  
+- 📦 Delivered  
 
-~ Online Payment via Stripe
+📧 Automatic Email Notifications to Users on Order Updates
 
+---
 
+## 🌐 Live Demo
 
+🔗 **Visit the Application:**  
+https://ecommerce-render-2.onrender.com
 
-------- 🛠️ Admin Panel -------
+---
 
-🧑‍💼 Role-based Access Control (Admin / User)
+## 💻 Tech Stack
 
-🗂️ Category Management (with discount support)
+| Layer | Technologies Used |
+|------|------------------|
+| 🎨 Frontend | Thymeleaf, HTML, CSS, Bootstrap |
+| 💻 Backend | Java 17, Spring Boot |
+| 🧩 ORM | Spring Data JPA, Hibernate |
+| 🔒 Security | Spring Security (Role-Based Authentication) |
+| 🗄️ Database | MySQL (Cloud Hosted via Aiven) |
+| 💰 Payments | Stripe API |
+| 📬 Email | JavaMailSender |
+| 🚀 Deployment | Render (Backend), Aiven (Database) |
 
-📦 Product Management (Create / Update / Delete)
+---
 
+## 🔑 Backend Features & Core Concepts
 
-📋 View & Manage All Orders
+- **Spring Boot** – Rapid application development & auto-configuration  
+- **Spring IOC Container** – Bean lifecycle and dependency management  
+- **Dependency Injection** – Loose coupling and scalable design  
+- **Spring MVC Architecture** – Controller → Service → Repository pattern  
+- **Spring Data JPA** – Repository-based database interactions  
+- **Hibernate ORM** – Object-relational mapping  
+- **Lombok** – Reduced boilerplate code using annotations  
 
-~ ✅ Update Order Status (Placed → Shipped → Delivered)
+---
 
-~ 📧 Auto Email Notification to Users
+## 🛡️ Security & Authentication
 
+- Spring Security for API protection  
+- Role-Based Access Control (ADMIN / USER)  
+- Encrypted passwords using **BCrypt**  
+- Secure login & session management  
 
+---
 
+## 📧 Email Notifications
 
-🌐 Live Demo
-🔗 Visit the App on Render
+- Order placement confirmation  
+- Order status updates  
+- JavaMailSender integration  
 
-<sub> https://ecommerce-render-2.onrender.com </sub>
+---
 
+## 🗄️ Project Structure
 
-
-💻 Tech Stack
-
-⚙️ Layer	                            🔧 Technologies Used
-
-
-👨‍🎨 Frontend :                            Thymeleaf,	HTML, CSS, Bootstrap
-
-
-👨‍💻 Backend	:                            Java 17, Spring Boot, Spring Data JPA
-
-
-🔒 Security :                           	Spring Security (Role-Based Auth)
-
-
-🗄️ Database	 :                           MySQL (Cloud Hosted via Aiven)
-
-
-💰 Payment :	                            Stripe API
-
-
-📬 Email	:                            JavaMailSender
-
-
-🚀 Deployment	:                         Render (for backend) + Aiven (for DB)
-
-
-
-
-📦 Ecommerce-render/
-├── 📁 backend/              # Spring Boot application
-
+```bash
+Cartify/
+├── 📁 backend/
 │   ├── controller/
-
 │   ├── entity/
-
 │   ├── repository/
-
 │   └── service/
-
-├── 📁 frontend/             # HTML, CSS, JS, Bootstrap views
-
+│
+├── 📁 frontend/
 │   ├── index.html
-
 │   ├── product-list.html
-
 │   ├── cart.html
-
 │   └── admin-dashboard.html
-
+│
 ├── 📄 application.properties
-
 └── 📄 README.md
-
