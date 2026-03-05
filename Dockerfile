@@ -9,10 +9,12 @@ RUN mvn clean package -DskipTests
 
 
 # Second stage: Use a smaller base image for running the application
-FROM openjdk:21-slim
+# FROM openjdk:21-slim
+FROM eclipse-temurin:21-jre-jammy
 
 # Copy the JAR file from the build stage
-COPY --from=build /target/Shopping_Cart-0.0.1-SNAPSHOT.jar /app/shopping_cart.jar
+# COPY --from=build /target/Shopping_Cart-0.0.1-SNAPSHOT.jar /app/shopping_cart.jar
+COPY --from=build /app/target/Shopping_Cart-0.0.1-SNAPSHOT.jar /app/shopping_cart.jar
 
 # Expose port 8080
 EXPOSE 8080
