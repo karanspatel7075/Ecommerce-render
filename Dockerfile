@@ -14,11 +14,13 @@ FROM eclipse-temurin:21-jre-jammy
 
 # Copy the JAR file from the build stage
 # COPY --from=build /target/Shopping_Cart-0.0.1-SNAPSHOT.jar /app/shopping_cart.jar
-COPY --from=build /app/target/Shopping_Cart-0.0.1-SNAPSHOT.jar /app/shopping_cart.jar
+# COPY --from=build /app/target/Shopping_Cart-0.0.1-SNAPSHOT.jar /app/shopping_cart.jar
+COPY --from=build /app/target/*.jar /app/app.jar
 
 # Expose port 8080
 EXPOSE 8080
 
 
 # Run the JAR file with ENTRYPOINT
-ENTRYPOINT ["java", "-jar", "/app/shopping_cart.jar"]
+# ENTRYPOINT ["java", "-jar", "/app/shopping_cart.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
