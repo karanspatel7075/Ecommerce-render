@@ -17,6 +17,8 @@ FROM eclipse-temurin:21-jre-jammy
 # COPY --from=build /app/target/Shopping_Cart-0.0.1-SNAPSHOT.jar /app/shopping_cart.jar
 COPY --from=build /app/target/*.jar /app/app.jar
 
+WORKDIR /app
+
 # Expose port 8080
 EXPOSE 8080
 
