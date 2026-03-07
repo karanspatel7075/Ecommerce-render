@@ -91,7 +91,7 @@ public class ProductServiceImple implements ProductService {
             String imageName = image.getOriginalFilename();
             product1.setImage(imageName);
             try {
-                File savefile = new File("images/product_image");
+                File savefile = new File("static/img/product_img");
 
                 // Ensure the directory exists
                 if (!savefile.exists()) {

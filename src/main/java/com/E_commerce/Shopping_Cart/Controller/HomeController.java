@@ -182,7 +182,7 @@ public class HomeController {
 //                    e.printStackTrace();
 //                }
 
-                    String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
+                    String uploadDir = System.getProperty("user.dir") + "static/img/profile_img";
                     File savefile = new File(uploadDir);
 
                     // Ensure the directory exists

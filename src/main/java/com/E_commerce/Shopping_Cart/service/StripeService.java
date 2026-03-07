@@ -15,7 +15,8 @@ import javax.crypto.SecretKey;
 @Service
 public class StripeService {
 
-    @Value("${stripe.secret-key}")
+//  @Value("${stripe.secret-key}")
+    @Value("${stripe.secretKey}")
     private String stripeSecretKey;
 
     @GetMapping("/success")

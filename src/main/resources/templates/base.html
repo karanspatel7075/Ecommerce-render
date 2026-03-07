@@ -75,7 +75,7 @@
                 </th:block>
 
                 <th:block th:if="${user!=null}">
-                    <th:block th:if="${user.role=='ROLE_USER' || user.role == 'ROLE_ADMIN'}">
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-regular fa-circle-user"></i> [[${user.name}]]

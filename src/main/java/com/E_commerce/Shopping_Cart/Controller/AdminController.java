@@ -94,7 +94,8 @@ public class AdminController {
 
         if (savedProduct != null) {
             try {
-                File savefile = new File("images/product_image"); // it's been stored in target folder
+//                File savefile = new File("images/product_image"); // it's been stored in target folder
+                File savefile = new File("static/img/product_image");
 
                 // Ensure the directory exists
                 if (!savefile.exists()) {
@@ -154,7 +155,7 @@ public class AdminController {
 
             if(savedCategory != null) {
                 try {
-                    String uploadDir = System.getProperty("user.dir") + "/images/category_image";
+                    String uploadDir = System.getProperty("user.dir") + "static/img/category_img";
                     File savefile = new File(uploadDir);
 
                     // Ensure the directory exists
@@ -219,7 +220,7 @@ public class AdminController {
             if (update != null) {
 
                 try {
-                    File savefile = new File("images/category_image");
+                    File savefile = new File("static/img/category_img");
 
                     // Ensure the directory exists
                     if (!savefile.exists()) {
@@ -469,7 +470,7 @@ public class AdminController {
 
         if(saveUser != null) {
             try {
-                File savefile = new File("images/profile_image");
+                File savefile = new File("static/img/profile_img");
 
                 Path path = Paths.get(savefile + File.separator + file.getOriginalFilename());
                 Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
@@ -516,7 +517,7 @@ public class AdminController {
         if (saveUpdate != null) {
 
             try {
-                String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
+                String uploadDir = System.getProperty("user.dir") + "static/img/profile_img";
                 File savefile = new File(uploadDir);
 
                 if (!savefile.exists()) {

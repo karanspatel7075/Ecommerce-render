@@ -220,6 +220,7 @@ public class UserController {
         } else {
             session.setAttribute("errorMsg", "Order failed! Please try again.");
         }
+
         // 🧠 Now check which payment type is selected
         if ("COD".equalsIgnoreCase(paymentType)) {
             // ➡ For Cash On Delivery, directly show success page
@@ -367,7 +368,7 @@ public class UserController {
         if (saveUpdate != null) {
 
             try {
-                String uploadDir = System.getProperty("user.dir") + "/images/profile_image";
+                String uploadDir = System.getProperty("user.dir") + "static/img/profile_img";
                 File savefile = new File(uploadDir);
 
                 if (!savefile.exists()) {
