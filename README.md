@@ -6,7 +6,7 @@
 [![Stripe](https://img.shields.io/badge/Payments-Stripe-635BFF)]()
 [![Deploy](https://img.shields.io/badge/Deploy-Render-46E3B7)]()
 
-<img src="./cartify-architecture.svg" alt="Cartify System Architecture" width="100%"/>
+<img width="1536" height="1024" alt="ChatGPT Image Aug 7, 2026, 02_00_37 AM" src="https://github.com/user-attachments/assets/274fd3c0-00b1-484b-b8c8-14859be58df5" />
 
 **Cartify** is a full-featured e-commerce backend built with Spring Boot and server-rendered Thymeleaf views. It supports a complete shopping flow — browse, cart, checkout — for users, and a full catalog/order management dashboard for admins, with dual payment paths (Cash on Delivery and Stripe) and email notifications at every order-status change.
 
